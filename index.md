@@ -262,3 +262,102 @@ La mayoría del *software* de virtualización requiere que el CPU cuente con car
     * Microsoft Hyper-V *
 
 + Por desgracia VirtualBox [no soporta virtualización anidada](https://www.virtualbox.org/ticket/4032)
+
+--------------------------------------------------------------------------------
+
+## 2. Introducción a Oracle VirtualBox
+
+--------
+
+### a. Diferencias entre Oracle VirtualBox y otros productos de Virtualización
+
+
+| Característica	| **Oracle VirtualBox**	| **VMware Workstation/Fusion**	| **Citrix XenServer**	| **VMware ESXi/vSphere**	|
+|:---------------------:|:---------------------:|:-----------------------------:|:---------------------:|:-----------------------------:|
+| **Segmento**		| Uso profesional	| Uso profesional		| Uso en servidores	| Uso en servidores	|
+| **Tipo**		| Tipo 2: *Hosted*	| Tipo 2: *Hosted*		| Tipo 1: *Bare-Metal*	| Tipo 1: *Bare-Metal*	|
+| **Licencia**		| Gratuita		| ＄＄				| Gratuito / ＄＄	| ＄＄＄＄＄ *		|
+| **Sistema Operativo**	| Linux, Windows, <br/> MacOS X | Linux, Windows, <br/> MacOS X	| Nativo	| Nativo		|
+| **MV simultaneas**	| Varias		| Varias			| Muchas		| ∞ MUCHAS		|
+| **Snapshots**		| ✔			| ✔				| ✔			| ✔			|
+| **Redes Virtuales**	| ✔			| ✔				| ✔			| ✔			|
+| **CLI**		| ✔ (`vboxmanage`)	| ✔ (`vmrun`, VIX)		| ✔ (`xe`, XAPI)	| ✔ (VIX, `esxcli`, PowerCLI)	|
+
+### b. Requerimientos de hardware y software en el host
+
+De acuerdo a la [documentación oficial](https://www.virtualbox.org/wiki/End-user_documentation), los requerimientos del sistema para VirtualBox 5.2 son:
+
+| Elemento | Descripción |
+|:--------:|:-----------:|
+| Procesador	| Arquitectura de 64 bits con extensiones de virtualización	|
+| Sistema operativo	| GNU/Linux de 64 bits	|
+| Memoria RAM	| Mínimo: 1 GB, Recomendado: 2 GB |
+| Disco Duro	| Mínimo 1 GB por cada máquina virtual <br/> Recomendado: 10 GB por máquina virtual	|
+| Soporte para *Aero*	| 3 GB de RAM y GPU nVidia, ATI o superior, instalar Guest Additions	|
+| Conexión a red	| Red cableada o inalámbrica	|
+| Audio del equipo	| Soporte ALSA instalado en el sistema operativo	|
+
+### c. Sistemas operativos soportados en máquinas virtuales
+
++ <https://www.virtualbox.org/wiki/Guest_OSes>
++ <http://www.oracle.com/technetwork/server-storage/virtualbox/support/index.html>
+
+| Sistema Operativo | Versiones |
+|:-----------------:|:---------:|
+| Debian GNU/Linux	| 9 … 4	|
+| CentOS GNU/Linux	| 7 … 4	|
+| RHEL/Oracle Enterprise Linux	| 7 … 4	|
+| Fedora GNU/Linux	| 16 … 24	|
+| Red Hat Enterprise Linux	| Atomic, 7 … 2.1	|
+| Red Hat Linux	| 9.0 … 6.2	|
+| openSUSE GNU/Linux	| 13.x … 10.x	|
+| SUSE Linux	| 10 … 7.3	|
+| Ubuntu Linux	| 17.04 … 5.04	|
+| FreeBSD	| 11 … 4	|
+| Mac OS X	| 10.12 … 10.5	|
+| Solaris	| 11 … 8	|
+| IBM OS/2 Warp	| 4.5.2, 4.0	|
+| Windows	| 10, 8.1, 8, 7, Vista, XP, …	|
+| Windows Server	| 2016, 2012 (R2), 2008 (R2), 2003, …	|
+
+### d. Dispositivos de hardware presentados a las máquinas virtuales
+
+<https://www.virtualbox.org/manual/ch03.html#idm1272>
+
++ Tarjeta madre **innotek VirtualBox**
++ Chipset (PIIX3, ICH9)
++ [Dispositivos de Sntrada/Salida:](https://www.virtualbox.org/manual/ch01.html#keyb_mouse_normal)
+  * PS/2
+  * USB tablet
+  * USB multi-touch tablet
++ Tarjeta gráfica **VirtualBox Graphics Adapter**
++ [Dispositivos de almacenamiento](https://www.virtualbox.org/manual/ch05.html#harddiskcontrollers)
+  * Floppy (I82078)
+  * IDE (PIIX3, PIIX4, ICH6)
+  * SATA (AHCI)
+  * SCSI (LSI Logic, Bus Logic)
+  * SAS (LSI Logic)
+  * USB MSD
+  * NVMe
++ [Tarjetas de Red](https://www.virtualbox.org/manual/ch06.html#nichardware)
+  * PCnet-PCI II (Am79C970A)
+  * PCnet-FAST III (Am79C973)
+  * Intel Pro/1000 MT Desktop (82540EM)
+  * Intel Pro/1000 T Server (82543GC)
+  * Intel Pro/1000 MT Server (82545EM)
+  * Paravirtualized Network (virtio-net)
++ Controladoras USB
+  * USB 1.0 (OHCI)
+  * USB 2.0 (EHCI)
+  * USB 3.0 (xHCI) (requiere extpack)
++ [Audio](https://www.virtualbox.org/manual/ch03.html#settings-audio)
+  * Host Audio Driver
+    - PulseAudio
+    - ALSA
+    - OSS
+    - Null
+  * Audio Controller
+    - ICH AC97
+    - Intel HD Audio
+    - SoundBlaster 16
++ 4x Serial Port
